@@ -103,13 +103,12 @@ static int boostpulse_open(struct omap_power_module *omap_device)
     if (omap_device->boostpulse_fd < 0) {
         omap_device->boostpulse_fd = open(BOOSTPULSE_PATH, O_WRONLY);
 
-        if (omap_device->boostpulse_fd < 0 && !omap_device->boostpulse_warned) {
-            strerror_r(errno, buf, sizeof(buf));
-            ALOGE("Error opening %s: %s\n", BOOSTPULSE_PATH, buf);
-            omap_device->boostpulse_warned = 1;
-        } else if (omap_device->boostpulse_fd > 0) {
-            omap_power_set_interactive(NULL, 1);
-            ALOGD("Opened boostpulse interface");
+        if (omap_device->boostpulse_fd < 0) {
+            if (!omap_device->boostpulse_warned) {
+                strerror_r(errno, buf, sizeof(buf));
+                ALOGE("Error opening %s: %s\n", BOOSTPULSE_PATH, buf);
+                omap_device->boostpulse_warned = 1;
+            }
         }
     }
 
