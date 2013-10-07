@@ -134,7 +134,7 @@ static void omap_power_init(struct power_module *module) {
     sysfs_write(CPUFREQ_INTERACTIVE "timer_rate", "20000");
     sysfs_write(CPUFREQ_INTERACTIVE "min_sample_time","60000");
     sysfs_write(CPUFREQ_INTERACTIVE "hispeed_freq", nom_freq);
-    sysfs_write(CPUFREQ_INTERACTIVE "go_hispeed_load", "50");
+    sysfs_write(CPUFREQ_INTERACTIVE "go_hispeed_load", "85");
     sysfs_write(CPUFREQ_INTERACTIVE "above_hispeed_delay", "100000");
 
     ALOGI("Initialized successfully");
