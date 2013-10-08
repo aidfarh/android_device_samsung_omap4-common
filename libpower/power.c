@@ -129,7 +129,7 @@ static void omap_power_init(struct power_module *module) {
 
     max_freq = freq_list[freq_num - 1];
     tmp = (NOM_FREQ_INDEX > freq_num) ? freq_num : NOM_FREQ_INDEX;
-    nom_freq = freq_list[tmp - 1];
+    nom_freq = "600000";
 
     sysfs_write(CPUFREQ_INTERACTIVE "timer_rate", "20000");
     sysfs_write(CPUFREQ_INTERACTIVE "min_sample_time","60000");
@@ -173,7 +173,7 @@ static void omap_power_set_interactive(struct power_module *module, int on) {
      * cpufreq policy.
      */
 
-    sysfs_write(CPUFREQ_CPU0 "scaling_max_freq", on ? max_freq : nom_freq);
+    // sysfs_write(CPUFREQ_CPU0 "scaling_max_freq", on ? max_freq : nom_freq);
 }
 
 static void omap_power_hint(struct power_module *module, power_hint_t hint, void *data) {
